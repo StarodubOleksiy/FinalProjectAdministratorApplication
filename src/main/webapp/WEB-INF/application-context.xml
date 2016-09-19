@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+        default-autowire="byName">
+
+
+       <bean id="employeeService" class=" net.proselyte.springmvc.service.EmployeeService"></bean>
+       <bean id="employeeDao" class="net.proselyte.springmvc.hibernate.HEmployeeDao"/>
+       <bean id="dishService" class="net.proselyte.springmvc.service.DishService"/>
+       <bean id="dishDao" class="net.proselyte.springmvc.hibernate.HDishDao"/>
+       <bean id="menuService" class="net.proselyte.springmvc.service.MenuService"/>
+       <bean id="menuDao" class="net.proselyte.springmvc.hibernate.HMenuDao"/>
+       <bean id="storageDao" class="net.proselyte.springmvc.hibernate.HStorageDao"/>
+       <bean id="storageServie" class="net.proselyte.springmvc.service.StorageService"/>
+       <bean id="orderDao" class="net.proselyte.springmvc.hibernate.HOrderDao"/>
+       <bean id="orderServie" class="net.proselyte.springmvc.service.OrderService"/>
+       <bean id="cookedDishDao" class="net.proselyte.springmvc.hibernate.HCookedDishDao"/>
+       <bean id="exceptionHandler" class="net.proselyte.springmvc.exceptions.GlobalExceptionHandler"/>
+
+
+
+</beans>

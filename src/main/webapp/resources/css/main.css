@@ -1,0 +1,108 @@
+h1{
+    color:black;
+    text-align:center;
+}
+
+.menu {
+    width: 70%;
+    background-color: #ffffff;
+    border: 1px solid black;
+    height:40px;
+    margin-top:40px;
+    margin-left:15%;
+    padding: 2px 2px 2px;
+
+}
+
+
+
+.menu ul {
+      margin-left: 30%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 30px;
+    align:center;
+
+}
+
+.menu ul li {
+    list-style: none;
+    float: left;
+
+
+}
+
+.menu ul li a {
+    margin-top: 2px;
+    margin : 0 auto;
+    padding: 5px 10px 50px;
+    padding-bottom: 9px;
+    color: #141210;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+}
+
+.menu ul :hover, #menu ul li a.active {
+    background-color: #ffeec6;
+}
+
+
+
+#right {
+    width: 30%;
+    margin-top: 5px;
+    margin-left: 30%;
+    padding-left: 10px;
+}
+
+#personal {
+    width: 100%;
+}
+
+#personal table {
+
+    border: 1px solid black;
+    margin-left: 25%;
+    align:center;
+}
+
+#personal table td {
+
+    border: 1px solid black;
+
+}
+
+#personal table th{
+    font-family:"Times New Roman";
+    font-size: 24pt;
+}
+
+
+#personal table td{
+    font-family:"Times New Roman";
+    font-size: 24pt;
+}
+
+.dish{
+    width: 100%;
+}
+
+.dish table {
+    margin-left: 40%;
+    align:center;
+}
+
+.dish  th{
+    font-family:"Times New Roman";
+    font-size: 24pt;
+}
+
+.dish   td{
+    font-family:"Times New Roman";
+    font-size: 24pt;
+}
+
+#image{
+    margin-left: 25%;
+}
