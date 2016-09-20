@@ -1,6 +1,5 @@
 package net.proselyte.springmvc.controller;
 
-import net.proselyte.springmvc.exceptions.ElementNotFoundException;
 import net.proselyte.springmvc.model.Dish;
 import net.proselyte.springmvc.model.Orders;
 import net.proselyte.springmvc.service.OrderService;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -38,18 +38,18 @@ private long orderId;
 
 
     @RequestMapping(value = "/findByTableNumber", method = RequestMethod.GET)
-    public String ordersByTableNumber(@RequestParam("name") String name, ModelMap model) throws ElementNotFoundException {
+    public String ordersByTableNumber(@RequestParam("name") String name, ModelMap model) throws IOException {
         List<Orders> orders = orderService.getOrdersByTableNumber(Integer.parseInt(name));
-        if(orders.size() ==0) throw new ElementNotFoundException("There are not such orders");
+        if(orders.size() ==0) throw new IOException("There are not such orders");
         model.put("orders",orders );
         return "orders";
     }
 
 
     @RequestMapping(value = "/findByWaiterId", method = RequestMethod.GET)
-    public String ordersByWaiterId(@RequestParam("name") String name, ModelMap model) throws ElementNotFoundException {
+    public String ordersByWaiterId(@RequestParam("name") String name, ModelMap model) throws IOException {
         List<Orders> orders = orderService.getOrdersByWaiterId(Integer.parseInt(name));
-        if(orders.size() ==0) throw new ElementNotFoundException("There are not such orders");
+        if(orders.size() ==0) throw new IOException("There are not such orders");
         model.put("orders",orders);
         return "orders";
     }

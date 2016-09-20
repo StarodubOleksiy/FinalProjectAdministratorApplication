@@ -1,6 +1,6 @@
 package net.proselyte.springmvc.controller;
 
-import net.proselyte.springmvc.exceptions.ElementNotFoundException;
+
 import net.proselyte.springmvc.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -97,7 +97,7 @@ public class EmployeeController {
 
 
     @RequestMapping(value = "/addCookedDish", method = RequestMethod.POST)
-    public String addCookedDish(@RequestParam("dishname") String dishname, @RequestParam("ordernumber") long ordernumber ,ModelMap model) throws ElementNotFoundException, IOException {
+    public String addCookedDish(@RequestParam("dishname") String dishname, @RequestParam("ordernumber") long ordernumber ,ModelMap model) throws  IOException {
         employeeService.addCookedDish(dishname, ordernumber,employeeId);
         model.addAttribute("message", "New dish was added for cooking successfully");
         return "result";

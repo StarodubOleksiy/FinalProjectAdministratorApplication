@@ -1,6 +1,6 @@
 package net.proselyte.springmvc.controller;
 
-import net.proselyte.springmvc.exceptions.ElementNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -78,7 +78,7 @@ public class DishController {
 
 
     @RequestMapping(value = "/addIngradientToDish", method = RequestMethod.POST)
-    public String addIngradient(@RequestParam("name") String name, ModelMap model) throws ElementNotFoundException {
+    public String addIngradient(@RequestParam("name") String name, ModelMap model) throws IOException {
         System.out.println("dish name = "+dishName);
        dishService.addIngradient(dishName, name);
         model.addAttribute("message", "New ingradient was added to dish successfully");
@@ -98,7 +98,7 @@ public class DishController {
 
 
     @RequestMapping(value = "/removeIngradientFromDish", method = RequestMethod.POST)
-    public String removeIngradient(@RequestParam("name") String name, ModelMap model) throws ElementNotFoundException {
+    public String removeIngradient(@RequestParam("name") String name, ModelMap model) throws IOException {
         dishService.removeIngradient(dishName,name);
         model.addAttribute("message", "Ingradient was deleted from dish successfully");
         return "result";

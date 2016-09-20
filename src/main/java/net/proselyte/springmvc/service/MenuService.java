@@ -1,12 +1,13 @@
 package net.proselyte.springmvc.service;
 
-import net.proselyte.springmvc.exceptions.ElementNotFoundException;
+
 import org.springframework.transaction.annotation.Transactional;
 import net.proselyte.springmvc.dao.DishDao;
 import net.proselyte.springmvc.dao.MenuDao;
 import net.proselyte.springmvc.model.Dish;
 import net.proselyte.springmvc.model.Menu;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -51,7 +52,7 @@ public class MenuService {
 
 
     @Transactional
-    public void addDish(String menuName, String dishName) throws ElementNotFoundException {
+    public void addDish(String menuName, String dishName) throws IOException {
 
         List<String> allDishes = new ArrayList<String>();
         Menu menu = menuDao.findByName(menuName);
@@ -62,11 +63,11 @@ public class MenuService {
         menu.setDishes(createDishes(allDishes));
     }
 
-    private List<Dish> createDishes(List<String> dishes )throws ElementNotFoundException {
+    private List<Dish> createDishes(List<String> dishes )throws IOException {
         List<Dish> result = new ArrayList<Dish>();
         for (String dishName: dishes) {
             Dish dish = dishDao.findByName(dishName);
-            if (dish == null) throw new ElementNotFoundException("This dish had not found");
+            if (dish == null) throw new IOException("This dish had not found");
             result.add(dishDao.findByName(dishName));
         }
 
@@ -74,11 +75,11 @@ public class MenuService {
     }
 
     @Transactional
-    public void removeDish(String menuName, String dishName) throws ElementNotFoundException
+    public void removeDish(String menuName, String dishName) throws IOException
     {
          Menu menu = menuDao.findByName(menuName);
         Dish dish = dishDao.findByName(dishName);
-        if (dish == null) throw new ElementNotFoundException("This dish had not found");
+        if (dish == null) throw new IOException("This dish had not found");
             for(int i = 0; i < menu.getDishes().size(); ++i)
                 if(menu.getDishes().get(i).getName().equals(dishName))
                 {

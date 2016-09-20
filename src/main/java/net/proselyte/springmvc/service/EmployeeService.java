@@ -1,7 +1,6 @@
 package net.proselyte.springmvc.service;
 
 import net.proselyte.springmvc.dao.*;
-import net.proselyte.springmvc.exceptions.ElementNotFoundException;
 import net.proselyte.springmvc.model.*;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -77,15 +76,15 @@ public class EmployeeService {
 
 
     @Transactional
-    public void addCookedDish(String dishName, long orderNumber, long cookId) throws ElementNotFoundException, IOException
+    public void addCookedDish(String dishName, long orderNumber, long cookId) throws  IOException
     {
         Cooked_Dish cooked_dish = new Cooked_Dish();
         Dish dish = dishDao.findByName(dishName);
         System.out.println("Current dish = " + dish);
-        if (dish == null) throw new ElementNotFoundException("This dish had not found");
+        if (dish == null) throw new IOException("This dish have not found");
         cooked_dish.setDish(dish);
         Orders order = orderDao.findById(orderNumber);
-        System.out.println("Current order = " + order);
+        if (order == null) throw new IOException("This order have not found");
         cooked_dish.setOrder(order);
         Cook cook = (Cook)getEmployeeById(cookId);
         cooked_dish.setCook(cook);

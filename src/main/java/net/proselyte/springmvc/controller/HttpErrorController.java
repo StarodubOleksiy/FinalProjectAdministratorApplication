@@ -1,5 +1,6 @@
 package net.proselyte.springmvc.controller;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,22 +15,21 @@ public class HttpErrorController {
 	private static final String GENERAL_ERROR_VIEW = "error";
 
 	@RequestMapping(value = "/errors/400.html")
-	public ModelAndView handle400(Model model) {
+	public ModelAndView handle400() {
 
 		ModelAndView modelAndView = new ModelAndView(GENERAL_ERROR_VIEW);
 		modelAndView.addObject("errorCode", "400");
-		modelAndView.addObject("message", "Error 400 happens!!! You have entered invalid string!!! It must be only numbers ");
+		modelAndView.addObject("message","Error 400 happens!!! Ви зробили неприпустимі дії. Можливо ви не ввели дані, або ввели їх неправильно!!!" );
 
 		return modelAndView;
 	}
-
 	@RequestMapping(value = "/errors/404.html")
-	public ModelAndView handle404(Model model) {
+	public ModelAndView handle404() {
 
 		ModelAndView modelAndView = new ModelAndView(GENERAL_ERROR_VIEW);
 		modelAndView.addObject("errorCode", "404");
-		modelAndView.addObject("message", "Error 404 happens!!! Page was not found!!!");
-
+		modelAndView.addObject("message", "Error 404 happens!!! Ви зробили неприпустимі дії. Можливо ви  хочете видалити елемент з бази даних" +
+				" який неможливо видалити або ввели сторінку якої не існує або не ввели потрібних даних");
 		return modelAndView;
 	}
 
@@ -73,15 +73,15 @@ public class HttpErrorController {
 		return modelAndView;
 	}
 
-	/*@RequestMapping(value = "/errors/500.html")
+	@RequestMapping(value = "/errors/500.html")
 	public ModelAndView handle500(Exception exception) {
 
 		ModelAndView modelAndView = new ModelAndView(GENERAL_ERROR_VIEW);
 		modelAndView.addObject("errorCode", "500");
-		modelAndView.addObject("message", "Error 500 happens!!! You have entered invalid name of element");
+		modelAndView.addObject("message", "Error 500 happens!!!");
 
 		return modelAndView;
-	}*/
+	}
 
 	@RequestMapping(value = "/errors/503.html")
 
@@ -89,16 +89,18 @@ public class HttpErrorController {
 
 		ModelAndView modelAndView = new ModelAndView(GENERAL_ERROR_VIEW);
 		modelAndView.addObject("errorCode", "503");
-		modelAndView.addObject("message", "Error 503 happens"+exception.getMessage());
+		modelAndView.addObject("message", "Error 503 happens");
 
 		return modelAndView;
 	}
 
 	@ExceptionHandler(IOException.class)
-	public ModelAndView handleBadFileNameException(IOException exception) {
+	public ModelAndView ioException(IOException exception) {
 		ModelAndView modelAndView = new ModelAndView("page-not-found");
 		modelAndView.addObject("message", exception.getMessage());
 		return modelAndView;
 	}
+
+
 
 }

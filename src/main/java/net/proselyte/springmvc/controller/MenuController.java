@@ -1,6 +1,6 @@
 package net.proselyte.springmvc.controller;
 
-import net.proselyte.springmvc.exceptions.ElementNotFoundException;
+
 import net.proselyte.springmvc.model.Menu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -84,7 +84,7 @@ public class MenuController {
 
 
     @RequestMapping(value = "/addDishToMenu", method = RequestMethod.POST)
-    public String addDish(@RequestParam("name") String name, ModelMap model) throws ElementNotFoundException {
+    public String addDish(@RequestParam("name") String name, ModelMap model) throws IOException {
         System.out.println("menu name = "+menuName);
         menuService.addDish(menuName,name);
              model.addAttribute("message", "New dish was added to menu successfully");
@@ -93,7 +93,7 @@ public class MenuController {
 
 
     @RequestMapping(value = "/removeDishFromMenu", method = RequestMethod.POST)
-    public String removeDish(@RequestParam("name") String name, ModelMap model) throws ElementNotFoundException  {
+    public String removeDish(@RequestParam("name") String name, ModelMap model) throws IOException  {
         menuService.removeDish(menuName,name);
         model.addAttribute("message", "Dish was deleted from menu successfully");
         return "result";

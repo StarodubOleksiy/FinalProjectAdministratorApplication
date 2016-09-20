@@ -1,6 +1,5 @@
 package net.proselyte.springmvc.controller;
 
-import net.proselyte.springmvc.exceptions.ElementNotFoundException;
 import net.proselyte.springmvc.model.Dish;
 import net.proselyte.springmvc.model.Menu;
 import net.proselyte.springmvc.model.Storage;
@@ -75,10 +74,10 @@ public class StorageController {
 
 
     @RequestMapping(value = "/findByWord", method = RequestMethod.GET)
-    public ModelAndView findIngradient(@RequestParam("name") String name) throws ElementNotFoundException {
+    public ModelAndView findIngradient(@RequestParam("name") String name) throws IOException {
         ModelAndView modelAndView = new ModelAndView();
         Storage ingradient = storageService.getIngradientByName(name);
-        if(ingradient == null) throw new ElementNotFoundException("There is no such ingradient");
+        if(ingradient == null) throw new IOException("There is no such ingradient");
         modelAndView.addObject("ingradient",ingradient);
         modelAndView.setViewName("storage");
 

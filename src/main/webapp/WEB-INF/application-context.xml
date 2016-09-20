@@ -16,7 +16,7 @@
        <bean id="orderDao" class="net.proselyte.springmvc.hibernate.HOrderDao"/>
        <bean id="orderServie" class="net.proselyte.springmvc.service.OrderService"/>
        <bean id="cookedDishDao" class="net.proselyte.springmvc.hibernate.HCookedDishDao"/>
-       <bean id="exceptionHandler" class="net.proselyte.springmvc.exceptions.GlobalExceptionHandler"/>
+
 
 
 

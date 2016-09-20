@@ -5,7 +5,6 @@
 </head>
 <body>
 <h1>Runtime error has  happened!!!</h1>
-<h1>${errorCode}</h1>
 <h1> ${message}</h1>
 <div class="menu" >
   <nav>
