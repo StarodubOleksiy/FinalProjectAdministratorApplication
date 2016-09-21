@@ -2,6 +2,7 @@ package net.proselyte.springmvc.controller;
 
 
 import net.proselyte.springmvc.model.*;
+import net.proselyte.springmvc.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,6 +25,10 @@ public class EmployeeController {
 
 
     private EmployeeService employeeService;
+    private OrderService orderService;
+
+
+
     private long employeeId;
 
     @Autowired
@@ -31,7 +36,10 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-
+    @Autowired
+    public void setOrderService(OrderService orderService) {
+        this.orderService = orderService;
+    }
 
     @RequestMapping(value = "/employees", method = RequestMethod.GET)
     public String employees(Map<String, Object> model) {
@@ -54,7 +62,8 @@ public class EmployeeController {
        if(employee.getPosition() == Position.COOK) {
              Cook cook = (Cook)employee;
            modelAndView.addObject("cooked_Dishes", cook.getDishes());
-       }
+           modelAndView.addObject("orders", orderService.getOrders());
+         }
        modelAndView.setViewName("employee");
         return modelAndView;
     }

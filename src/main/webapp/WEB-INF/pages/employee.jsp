@@ -94,6 +94,7 @@
   </c:if>
 
   <c:if test="${employee.position == 'COOK'}">
+    <h1>Приготовлені страви цього кухаря</h1>
 <table style="align-items: center">
   <tr>
     <th>id </th>
@@ -112,6 +113,28 @@
               </tr>
 
     </c:forEach>
+  </table>
+  <h1>Список відкритих замовлень</h1>
+  <table style="align-items: center">
+    <tr>
+      <th>Id </th>
+      <th>Employee Id </th>
+      <th>Table number </th>
+      <th>Order date </th>
+      <th>State </th>
+    </tr>
+
+    <c:forEach items="${orders}" var="order">
+      <tr>
+        <td><a href="/orderInformation?orderId=${order.id}">${order.id}</a></td>
+        <td><a href="/employee?employeeId=${order.waiter.id}">${order.waiter.id}</a></td>
+        <td>${order.tableNumber}</td>
+        <td>${order.orderDate}</td>
+        <td>${order.state}</td>
+      </tr>
+    </c:forEach>
+
+  </table>
   <tr>
     <td colspan="4">
       <form method="POST" action="addCookedDish">
