@@ -24,11 +24,7 @@
           <span>Storage</span>
         </a>
       </li>
-      <li>
-        <a href="/dishes" >
-          <span>Dishes</span>
-        </a>
-      </li>
+
       <li>
         <a href="/orders" >
           <span>Orders</span>
