@@ -87,4 +87,17 @@ public class DishService {
         dishDao.remove(dishId);
     }
 
+
+    @Transactional
+    public void changeWeight(long id, float weight)
+    {
+        dishDao.changeWeight(id,weight);
+    }
+
+    @Transactional
+    public void changePrice(long id, float price)
+    {
+        dishDao.changePrice(id,price);
+    }
+
 }

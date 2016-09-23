@@ -1,6 +1,7 @@
 package net.proselyte.springmvc.controller;
 
 
+import net.proselyte.springmvc.model.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -113,12 +114,19 @@ public class DishController {
 
 
 
+    @RequestMapping(value = "/changeWeight", method = RequestMethod.GET)
+    public String setNewWeight(@RequestParam("newWeight") float newWeight, ModelMap model) throws IOException {
+       dishService.changeWeight(dishId, newWeight);
+        model.addAttribute("message", "Weight was change successfully");
+        return "result";
 
-    /*@ExceptionHandler(IOException.class)
-    public ModelAndView handleBadFileNameException(IOException exception) {
-        ModelAndView modelAndView = new ModelAndView("page-not-found");
-        modelAndView.addObject("message", exception.getMessage());
-        return modelAndView;
-    }*/
+    }
 
+
+    @RequestMapping(value = "/changePrice", method = RequestMethod.GET)
+    public String setNewPrice(@RequestParam("newPrice") float newPrice, ModelMap model) throws IOException {
+        dishService.changePrice(dishId,newPrice);
+        model.addAttribute("message", "Price was change successfully");
+        return "result";
+    }
 }

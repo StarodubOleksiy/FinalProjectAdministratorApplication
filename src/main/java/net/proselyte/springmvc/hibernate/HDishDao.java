@@ -1,5 +1,6 @@
 package net.proselyte.springmvc.hibernate;
 
+import net.proselyte.springmvc.model.Storage;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -48,4 +49,23 @@ public class HDishDao implements DishDao {
 
         sessionFactory.getCurrentSession().delete(findById(id));
     }
+
+
+    @Override
+    public void changeWeight(Long id, float weight) {
+        Session session = sessionFactory.getCurrentSession();
+        Dish dish = session.get(Dish.class, id);
+        dish.setWeight(weight);
+        sessionFactory.getCurrentSession().update(dish);
+    }
+
+    @Override
+    public void changePrice(Long id, float price) {
+        Session session = sessionFactory.getCurrentSession();
+        Dish dish = session.get(Dish.class, id);
+        dish.setPrice(price);
+        sessionFactory.getCurrentSession().update(dish);
+    }
+
+
 }

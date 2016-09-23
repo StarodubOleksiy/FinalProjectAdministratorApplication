@@ -92,6 +92,40 @@
     </ul>
   </nav>
 </div>
+<div>
+  <table>
+    <tr>
+      <td>
+        <form method="GET" action="changeWeight">
+          <table>
+            <tr><th><h2>Поміняти вагу страви</h2></th></tr>
+            <tr>
+              <td>Введіть нову  вагу :</td>
+              <td><input type="text" name="newWeight"/></td>
+            </tr>
+            <tr>
+              <td colspan="2"><input type="submit"></td>
+            </tr>
+          </table>
+        </form>
+      </td>
+      <td>
+        <form method="GET" action="changePrice">
+          <table>
+            <tr><th><h2>Поміняти ціну страви</h2></th></tr>
+            <tr>
+              <td>Введіть нову ціну :</td>
+              <td><input type="text" name="newPrice"/></td>
+            </tr>
+            <tr>
+              <td colspan="2"><input type="submit"></td>
+            </tr>
+          </table>
+        </form>
+      </td>
+    </tr>
+  </table>
+</div>
 
 
 </body>

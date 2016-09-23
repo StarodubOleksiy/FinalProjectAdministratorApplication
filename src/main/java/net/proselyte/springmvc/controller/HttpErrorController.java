@@ -19,7 +19,8 @@ public class HttpErrorController {
 
 		ModelAndView modelAndView = new ModelAndView(GENERAL_ERROR_VIEW);
 		modelAndView.addObject("errorCode", "400");
-		modelAndView.addObject("message","Error 400 happens!!! Ви зробили неприпустимі дії. Можливо ви не ввели дані, або ввели їх неправильно!!!" );
+		modelAndView.addObject("message","Error 400 happens!!! Ви зробили неприпустимі дії." +
+				" Можливо ви не ввели дані, або ввели їх неправильно!!! Наприклад в числове поле ввели літери і т.д." );
 
 		return modelAndView;
 	}

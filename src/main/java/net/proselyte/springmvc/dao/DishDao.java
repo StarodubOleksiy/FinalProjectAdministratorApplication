@@ -13,5 +13,7 @@ public interface DishDao {
      List<Dish> findAll();
     Dish findById(Long id);
     Dish findByName(String name);
+    public void changePrice(Long id, float price);
+    public void changeWeight(Long id, float weight);
 
 }
