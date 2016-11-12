@@ -1,6 +1,8 @@
 package net.proselyte.springmvc.service;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 import net.proselyte.springmvc.dao.DishDao;
 import net.proselyte.springmvc.dao.MenuDao;
@@ -18,6 +20,8 @@ import java.util.Set;
  */
 public class MenuService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(MenuService.class);
+
     private MenuDao menuDao;
     private DishDao dishDao;
 
@@ -33,12 +37,14 @@ public class MenuService {
 
     @Transactional
     public List<Menu> getMenu() {
+        LOGGER.info("====================Showing current menu====================================");
         return menuDao.showAll();
     }
 
 
     @Transactional
     public void saveMenu(Menu menu) {
+        LOGGER.info("====================Adding new menu====================================");
         Set<Menu> allMenues = new HashSet<Menu>(menuDao.showAll());
         if (!allMenues.contains(menu))
         menuDao.save(menu);
@@ -47,13 +53,14 @@ public class MenuService {
 
     @Transactional
     public void removeMenu(long menuId) {
+        LOGGER.info("====================Removing current menu====================================");
         menuDao.remove(menuId);
     }
 
 
     @Transactional
     public void addDish(String menuName, String dishName) throws IOException {
-
+        LOGGER.info("====================Adding dish to current menu====================================");
         List<String> allDishes = new ArrayList<String>();
         Menu menu = menuDao.findByName(menuName);
         for(int  i = 0; i < menu.getDishes().size(); ++i )
@@ -77,6 +84,7 @@ public class MenuService {
     @Transactional
     public void removeDish(String menuName, String dishName) throws IOException
     {
+        LOGGER.info("====================Removing dish from current menu====================================");
          Menu menu = menuDao.findByName(menuName);
         Dish dish = dishDao.findByName(dishName);
         if (dish == null) throw new IOException("This dish had not found");
@@ -89,6 +97,7 @@ public class MenuService {
 
     @Transactional
     public Menu getMenuByName(String menuName){
+        LOGGER.info("LOGGER.info(\"====================Finding menu "+menuName+"====================================\");");
         return menuDao.findByName(menuName);
     }
 

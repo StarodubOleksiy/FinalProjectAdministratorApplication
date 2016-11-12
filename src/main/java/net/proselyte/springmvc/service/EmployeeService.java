@@ -2,6 +2,8 @@ package net.proselyte.springmvc.service;
 
 import net.proselyte.springmvc.dao.*;
 import net.proselyte.springmvc.model.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
@@ -19,6 +21,8 @@ public class EmployeeService {
     private DishDao dishDao;
     private CookedDishDao cookedDishDao ;
     private StorageDao storageDao ;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeService.class);
 
 
     public void setDishDao(DishDao dishDao) {
@@ -44,22 +48,27 @@ public class EmployeeService {
 
     @Transactional
     public Employee getEmployeeByName(String employeeName){
+        LOGGER.info("====================Showing current employee====================================");
         return employeeDao.findByName(employeeName);
     }
 
     @Transactional
     public List<Employee> getEmployees() {
+        LOGGER.info("====================Showing all employees====================================");
+
         return employeeDao.findAll();
     }
 
 
     @Transactional
     public Employee getEmployeeById(long employeeId){
+        LOGGER.info("====================Showing current employee id = "+employeeId+" ====================================");
         return employeeDao.findById(employeeId);
     }
 
     @Transactional
     public void saveEmployee(Employee employee) {
+        LOGGER.info("====================Adding new employee====================================");
         employeeDao.save(employee);
     }
 
@@ -67,6 +76,7 @@ public class EmployeeService {
     @Transactional
     public void createOrder(int tableNumber, long waiterId)
     {
+        LOGGER.info("====================Adding new order====================================");
         Orders order = new Orders();
         order.setTableNumber(tableNumber);
         Waiter waiter = (Waiter)getEmployeeById(waiterId);
@@ -78,6 +88,7 @@ public class EmployeeService {
     @Transactional
     public void addCookedDish(String dishName, long orderNumber, long cookId) throws  IOException
     {
+        LOGGER.info("====================Adding new cooked dish====================================");
         Cooked_Dish cooked_dish = new Cooked_Dish();
         Dish dish = dishDao.findByName(dishName);
         System.out.println("Current dish = " + dish);
