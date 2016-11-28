@@ -25,8 +25,7 @@ public class CustomExceptionResolver extends SimpleMappingExceptionResolver {
                                                HttpServletRequest request){
         ModelAndView mv = super.getModelAndView(viewName, ex);
 
-        mv.addObject("message", "view: " + viewName
-                + "exceptionMessage: " + ex.getMessage()
+        mv.addObject("message", "Error message: " + ex.getMessage()
              );
 
         return mv;

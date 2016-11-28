@@ -18,8 +18,7 @@ public class HttpErrorController {
 	public ModelAndView handle400() {
 
 		ModelAndView modelAndView = new ModelAndView(GENERAL_ERROR_VIEW);
-		modelAndView.addObject("errorCode", "400");
-		modelAndView.addObject("message","Error 400 happens!!! Ви зробили неприпустимі дії." +
+		modelAndView.addObject("message","Ви зробили неприпустимі дії." +
 				" Можливо ви не ввели дані, або ввели їх неправильно!!! Наприклад в числове поле ввели літери і т.д." );
 
 		return modelAndView;
@@ -29,7 +28,7 @@ public class HttpErrorController {
 
 		ModelAndView modelAndView = new ModelAndView(GENERAL_ERROR_VIEW);
 		modelAndView.addObject("errorCode", "404");
-		modelAndView.addObject("message", "Error 404 happens!!! Ви зробили неприпустимі дії. Можливо ви  хочете видалити елемент з бази даних" +
+		modelAndView.addObject("message", " Ви зробили неприпустимі дії. Можливо ви  хочете видалити елемент з бази даних" +
 				" який неможливо видалити або ввели сторінку якої не існує або не ввели потрібних даних");
 		return modelAndView;
 	}
